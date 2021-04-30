@@ -6,10 +6,11 @@ import re
 import sys
 
 
-inputPath = "오탈자 확인\*.pptx"
-sys.stdout = open('output.txt','w')
+inputPath = "Simple-pptx-crawler\오탈자 확인\*.pptx"
+#sys.stdout = open('output.txt','w')
 
 for path in glob.glob(inputPath):
+    print(" ")
     print(path)
     f = open(path, "rb")
     prs = Presentation(f)
@@ -17,12 +18,16 @@ for path in glob.glob(inputPath):
     # AMBIGUOUSError = [] #표준어 맞는지 모름
     # STATISTICAL_CORRECTIONError = [] #통계적으로 맞는 단어
 
+    i = 1
 
     for slide in prs.slides:
-        print("----------------------")
+        
+        print("----------[#",i,"]------------")
+        
         text = []
 
         for shape in slide.shapes:
+            
             if not shape.has_text_frame:
                 continue
             for run in shape.text_frame.paragraphs:
@@ -39,6 +44,7 @@ for path in glob.glob(inputPath):
                     if value == 4:
                         print("STATISTICAL_CORRECTION")
                         print(key)
+        i += 1
         
         
         
