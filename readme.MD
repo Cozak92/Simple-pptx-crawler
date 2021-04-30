@@ -1,4 +1,4 @@
-## Simper pptx crawler
+## Simple pptx crawler
 ---
 
 몇 천장 분량의 pptx 파일 맞춤법 검사를 확인하기 위해 만들었습니다.
