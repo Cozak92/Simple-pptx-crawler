@@ -6,8 +6,12 @@ import re
 import sys
 
 
-inputPath = "Simple-pptx-crawler\오탈자 확인\*.pptx"
-#sys.stdout = open('output.txt','w')
+inputPath = "오탈자 확인\*.pptx"
+sys.stdout = open('result.txt','w')
+
+lis = glob.glob(inputPath)
+print(*lis)
+
 
 for path in glob.glob(inputPath):
     print(" ")
@@ -37,28 +41,25 @@ for path in glob.glob(inputPath):
                 for key, value in result.words.items():
                     if value == 1:
                         print("WRONG_SPELLING")
+                        print(result.original)
                         print(key)
+                        
                     if value == 3:
                         print("AMBIGUOUS")
-                        pinrt(key)
+                        print(result.original)
+                        print(key)
+                        
                     if value == 4:
                         print("STATISTICAL_CORRECTION")
+                        print(result.original)
                         print(key)
+                        
         i += 1
         
         
         
 
 
-        # for t in text:
-            
-        #     for key, value in result.words.items():
-        #         if value == 1:
-        #             SPELLINGError.append(key)
-        #         if value == 3:
-        #             AMBIGUOUSError.append(key)
-        #         if value == 4:
-        #             STATISTICAL_CORRECTIONError.append(key)
 
 
 
